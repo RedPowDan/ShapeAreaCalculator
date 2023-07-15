@@ -34,6 +34,16 @@ namespace ShapeAreaCalculator.Figures
             return Math.PI * Math.Pow(this._radius, 2);
         }
 
+        /// <inheritdoc />
+        /// <exception cref="ArgumentException">Радиус должен быть положительным числом.</exception>
+        public override void ValidateFigure()
+        {
+            if (this._radius <= 0)
+            {
+                throw new ArgumentException("Радиус должен быть положительным числом.");
+            }
+        }
+
         #endregion
     }
 }

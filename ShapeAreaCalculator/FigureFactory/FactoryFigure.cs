@@ -1,4 +1,3 @@
-using System;
 using ShapeAreaCalculator.Figures;
 
 namespace ShapeAreaCalculator.FigureFactory
@@ -13,23 +12,22 @@ namespace ShapeAreaCalculator.FigureFactory
         /// <inheritdoc />
         public Circle CreateCircle(double radius)
         {
-            if (radius <= 0)
-            {
-                throw new ArgumentException("Радиус должен быть положительным числом.");
-            }
+            var circle = new Circle(radius);
+            circle.ValidateFigure();
 
-            return new Circle(radius);
+            return circle;
         }
 
         /// <inheritdoc />
-        public Triangle CreateTriangle(double side1, double side2, double side3)
+        public Triangle CreateTriangle(
+            double side1,
+            double side2,
+            double side3)
         {
-            if (side1 <= 0 || side2 <= 0 || side3 <= 0)
-            {
-                throw new ArgumentException("Все стороны треугольника должны быть положительными числами.");
-            }
+            var triangle = new Triangle(side1, side2, side3);
+            triangle.ValidateFigure();
 
-            return new Triangle(side1, side2, side3);
+            return triangle;
         }
 
         #endregion

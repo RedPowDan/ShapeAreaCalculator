@@ -8,7 +8,7 @@ namespace ShapeAreaCalculator.Calculators
     public class FigureCalculator : IFigureCalculator
     {
         #region Public Methods
-        
+
         /// <inheritdoc />
         public double CalculateArea(FigureBase figure)
         {
@@ -16,9 +16,9 @@ namespace ShapeAreaCalculator.Calculators
         }
 
         /// <inheritdoc />
-        public bool IsRightTriangle(Triangle figure)
+        public bool IsRightTriangle(Triangle triangle)
         {
-            return figure.IsRightTriangle();
+            return triangle.IsRightTriangle();
         }
 
         #endregion

@@ -37,7 +37,7 @@ namespace Tests
         public void CreateCircle_ZeroRadius_ThrowsArgumentException()
         {
             // Arrange
-            double radius = 0;
+            const int radius = 0;
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => this._figureFactory.CreateCircle(radius));
@@ -47,7 +47,7 @@ namespace Tests
         public void CreateCircle_NegativeRadius_ThrowsArgumentException()
         {
             // Arrange
-            double radius = -10;
+            const int radius = -10;
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => this._figureFactory.CreateCircle(radius));
@@ -57,38 +57,86 @@ namespace Tests
         public void CalculateTriangleArea_ValidSides_ReturnsCorrectArea()
         {
             // Arrange
-            double side1 = 3;
-            double side2 = 4;
-            double side3 = 5;
-            double expectedArea = 6;
-            var triangle = _figureFactory.CreateTriangle(side1, side2, side3);
+            const int side1 = 3;
+            const int side2 = 4;
+            const int side3 = 5;
+            const int expectedArea = 6;
+            var triangle = this._figureFactory.CreateTriangle(side1, side2, side3);
 
             // Act
-            double actualArea = _figureCalculator.CalculateArea(triangle);
+            var actualArea = this._figureCalculator.CalculateArea(triangle);
 
             // Assert
             Assert.AreEqual(expectedArea, actualArea);
         }
         
         [Test]
-        public void CreateTriangle_ZeroSide_ThrowsArgumentException()
+        public void CreateTriangle_ZeroSide1_ThrowsArgumentException()
         {
             // Arrange
-            double side1 = 0;
-            double side2 = 4;
-            double side3 = 5;
+            const int side1 = 0;
+            const int side2 = 4;
+            const int side3 = 5;
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => this._figureFactory.CreateTriangle(side1, side2, side3));
+        }
+        
+        [Test]
+        public void CreateTriangle_ZeroSide2_ThrowsArgumentException()
+        {
+            // Arrange
+            const int side1 = 3;
+            const int side2 = 0;
+            const int side3 = 5;
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => this._figureFactory.CreateTriangle(side1, side2, side3));
+        }
+        
+        [Test]
+        public void CreateTriangle_ZeroSide3_ThrowsArgumentException()
+        {
+            // Arrange
+            const int side1 = 3;
+            const int side2 = 4;
+            const int side3 = 0;
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => this._figureFactory.CreateTriangle(side1, side2, side3));
         }
 
         [Test]
-        public void CreateTriangle_NegativeSide_ThrowsArgumentException()
+        public void CreateTriangle_NegativeSide1_ThrowsArgumentException()
         {
             // Arrange
-            double side1 = -3;
-            double side2 = 4;
-            double side3 = 5;
+            const int side1 = -3;
+            const int side2 = 4;
+            const int side3 = 5;
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => this._figureFactory.CreateTriangle(side1, side2, side3));
+        }
+
+        [Test]
+        public void CreateTriangle_NegativeSide2_ThrowsArgumentException()
+        {
+            // Arrange
+            const int side1 = 3;
+            const int side2 = -4;
+            const int side3 = 5;
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => this._figureFactory.CreateTriangle(side1, side2, side3));
+        }
+
+        [Test]
+        public void CreateTriangle_NegativeSide3_ThrowsArgumentException()
+        {
+            // Arrange
+            const int side1 = 3;
+            const int side2 = 4;
+            const int side3 = -5;
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => this._figureFactory.CreateTriangle(side1, side2, side3));
@@ -98,13 +146,13 @@ namespace Tests
         public void IsRightTriangle_ValidSides_ReturnsCorrectAnswer()
         {
             // Arrange
-            double side1 = 17;
-            double side2 = 15;
-            double side3 = 8;
-            var triangle = _figureFactory.CreateTriangle(side1, side2, side3);
+            const int side1 = 17;
+            const int side2 = 15;
+            const int side3 = 8;
+            var triangle = this._figureFactory.CreateTriangle(side1, side2, side3);
 
             // Act
-            var actualResult = _figureCalculator.IsRightTriangle(triangle);
+            var actualResult = this._figureCalculator.IsRightTriangle(triangle);
 
             // Assert
             Assert.IsTrue(actualResult);
@@ -115,13 +163,13 @@ namespace Tests
         public void IsRightTriangle_ValidSides_ReturnsIncorrectAnswer()
         {
             // Arrange
-            double side1 = 17;
-            double side2 = 15;
-            double side3 = 6;
-            var triangle = _figureFactory.CreateTriangle(side1, side2, side3);
+            const int side1 = 17;
+            const int side2 = 15;
+            const int side3 = 6;
+            var triangle = this._figureFactory.CreateTriangle(side1, side2, side3);
 
             // Act
-            var actualResult = _figureCalculator.IsRightTriangle(triangle);
+            var actualResult = this._figureCalculator.IsRightTriangle(triangle);
 
             // Assert
             Assert.IsFalse(actualResult);

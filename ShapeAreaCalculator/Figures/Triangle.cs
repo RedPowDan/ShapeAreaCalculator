@@ -7,16 +7,29 @@ namespace ShapeAreaCalculator.Figures
     /// </summary>
     public class Triangle : FigureBase
     {
-        internal Triangle(double side1, double side2, double side3)
+        #region Constructor
+
+        internal Triangle(
+            double side1,
+            double side2,
+            double side3)
         {
             this._side1 = side1;
             this._side2 = side2;
             this._side3 = side3;
         }
 
-        private double _side1;
-        private double _side2;
-        private double _side3;
+        #endregion
+
+        #region Private Fields
+
+        private readonly double _side1;
+        private readonly double _side2;
+        private readonly double _side3;
+
+        #endregion
+
+        #region Public Methods
 
         /// <inheritdoc />
         public override double CalculateArea()
@@ -26,10 +39,20 @@ namespace ShapeAreaCalculator.Figures
                 perimeter * (perimeter - this._side1) * (perimeter - this._side2) * (perimeter - this._side3));
         }
 
+        /// <inheritdoc />
+        /// <exception cref="ArgumentException">Все стороны треугольника должны быть положительными числами.</exception>
+        public override void ValidateFigure()
+        {
+            if (this._side1 <= 0 || this._side2 <= 0 || this._side3 <= 0)
+            {
+                throw new ArgumentException("Все стороны треугольника должны быть положительными числами.");
+            }
+        }
+
         /// <summary>
         /// Является ли треугольник прямоугольным.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Результат проверки.</returns>
         public bool IsRightTriangle()
         {
             double hypotenuse, cathetus1, cathetus2;
@@ -55,5 +78,7 @@ namespace ShapeAreaCalculator.Figures
 
             return Math.Abs(Math.Pow(hypotenuse, 2) - (Math.Pow(cathetus1, 2) + Math.Pow(cathetus2, 2))) < 0.0001;
         }
+
+        #endregion
     }
 }

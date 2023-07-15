@@ -16,7 +16,12 @@ namespace ShapeAreaCalculator.Calculators
         /// <returns>Площадь фигуры.</returns>
         public double CalculateArea(FigureBase figure);
 
-        public bool IsRightTriangle(Triangle figure);
+        /// <summary>
+        /// Является ли треугольник прямоугольным.
+        /// </summary>
+        /// <param name="triangle">Треугольник.</param>
+        /// <returns>Результат проверки.</returns>
+        public bool IsRightTriangle(Triangle triangle);
 
         #endregion
     }
