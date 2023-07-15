@@ -157,15 +157,62 @@ namespace Tests
             // Assert
             Assert.IsTrue(actualResult);
         }
-        
-                
+
         [Test]
-        public void IsRightTriangle_ValidSides_ReturnsIncorrectAnswer()
+        public void IsRightTriangle_ValidSides1_ReturnsIncorrectAnswer()
         {
             // Arrange
             const int side1 = 17;
             const int side2 = 15;
             const int side3 = 6;
+            var triangle = this._figureFactory.CreateTriangle(side1, side2, side3);
+
+            // Act
+            var actualResult = this._figureCalculator.IsRightTriangle(triangle);
+
+            // Assert
+            Assert.IsFalse(actualResult);
+        }
+
+        [Test]
+        public void IsRightTriangle_ValidSides2_ReturnsIncorrectAnswer()
+        {
+            // Arrange
+            const int side1 = 17;
+            const int side2 = 6;
+            const int side3 = 15;
+            var triangle = this._figureFactory.CreateTriangle(side1, side2, side3);
+
+            // Act
+            var actualResult = this._figureCalculator.IsRightTriangle(triangle);
+
+            // Assert
+            Assert.IsFalse(actualResult);
+        }
+
+        [Test]
+        public void IsRightTriangle_ValidSides3_ReturnsIncorrectAnswer()
+        {
+            // Arrange
+            const int side1 = 6;
+            const int side2 = 17;
+            const int side3 = 15;
+            var triangle = this._figureFactory.CreateTriangle(side1, side2, side3);
+
+            // Act
+            var actualResult = this._figureCalculator.IsRightTriangle(triangle);
+
+            // Assert
+            Assert.IsFalse(actualResult);
+        }
+
+        [Test]
+        public void IsRightTriangle_ValidSides4_ReturnsIncorrectAnswer()
+        {
+            // Arrange
+            const int side1 = 6;
+            const int side2 = 15;
+            const int side3 = 17;
             var triangle = this._figureFactory.CreateTriangle(side1, side2, side3);
 
             // Act
