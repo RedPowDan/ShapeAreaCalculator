@@ -22,7 +22,7 @@ namespace ShapeAreaCalculator.Figures
 
         #region Public Properties
 
-        private double _radius;
+        private readonly double _radius;
 
         #endregion
 
